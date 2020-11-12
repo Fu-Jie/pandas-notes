@@ -1,12 +1,12 @@
 # Pandas
 
 1. [Pandas](#pandas)
-   1. [使用 `for` 循环遍历所有元素](#使用-for-循环遍历所有元素)
-   2. [`at` 与 `loc` 的区别](#at-与-loc-的区别)
+   1. [使用`for`循环遍历所有元素](#使用for循环遍历所有元素)
+   2. [`at`与`loc`](#at与loc)
    3. [`align`](#align)
-   4. [`at` 与 `iat`，`loc` 与 `iloc` 的区别](#at-与-iatloc-与-iloc-的区别)
+   4. [`at`与`iat`,`loc`与`iloc`](#at与iatloc与iloc)
    5. [`pd.isna()`](#pdisna)
-   6. [`category` 数据类型存在的意义](#category-数据类型存在的意义)
+   6. [`category`数据类型存在的意义](#category数据类型存在的意义)
    7. [`coalesce`](#coalesce)
    8. [`CategoricalDtype`](#categoricaldtype)
    9. [`to_frame(name=name)`](#to_framenamename)
@@ -24,8 +24,8 @@
    21. [`agg`](#agg)
    22. [`apply`](#apply)
    23. [`pipe`](#pipe)
-   24. [`applymap` 与 `apply`](#applymap-与-apply)
-   25. [`agg` 与 `apply` 的区别](#agg-与-apply-的区别)
+   24. [`applymap`与`apply`](#applymap与apply)
+   25. [`agg`与`apply`](#agg与apply)
    26. [`apply`,`applymap`,`agg`,`transform`,`pipe`](#applyapplymapaggtransformpipe)
    27. [`query`](#query)
    28. [`assign`](#assign)
@@ -35,14 +35,14 @@
    32. [Pandas 1.1.4对于astype的修复](#pandas-114对于astype的修复)
    33. [Pandas_FAQ](#pandas_faq)
 
-## 使用 `for` 循环遍历所有元素
+## 使用`for`循环遍历所有元素
 
 ```Python
     for i in df.index:
         for j in df.column:
 ```
 
-## `at` 与 `loc` 的区别
+## `at`与`loc`
 
 at只能作用于一个值的修改，loc可以修改多值。如果只要访问单个元素，at比loc速度更快，应该优先选择at而不是loc。
 
@@ -50,7 +50,7 @@ at只能作用于一个值的修改，loc可以修改多值。如果只要访问
 
 作用是将2个dataframe根据列或者行索引进行对齐,保证列或者行的索引数是一致的
 
-## `at` 与 `iat`，`loc` 与 `iloc` 的区别
+## `at`与`iat`,`loc`与`iloc`
 
 已i开头使用整数索引，第一行，第一列就是[0,0]。不以i开头的通过索引值和列标签来获取值。
 
@@ -58,7 +58,7 @@ at只能作用于一个值的修改，loc可以修改多值。如果只要访问
 
 用于检测空值最佳的选择，它会根据输入返回bool值来确定是否为空。
 
-## `category` 数据类型存在的意义
+## `category`数据类型存在的意义
 
 * 比字符串类型节省内存。
 * 可以自定义排序规则。
@@ -159,11 +159,11 @@ df.drop(columns/index=)
 如果你的自定义的函数的第一个参数不是dataframe，而是其他位置才传入dataframe，则可以这样 `pipe((func_name,'形参名称'))`。即`func(a,df) =>df.pipe((func,'df'),a)
 如果你的自定义函数还有其他参数(除了df以为),可以这样传入自定义函数的参数.`df.pipe(func,param_01=value)`
 
-## `applymap` 与 `apply`
+## `applymap`与`apply`
 
 applymap操作dataframe每一个元素,apply操作dataframe一列,df.apply(意思是对df的所有列做相同的操作,如果这个自定义函数只能对一些列可以用，对其他某些列不能用就可能会报错，比如一些计算只能对数值变量使用，对文本变量就会报错)
 
-## `agg` 与 `apply` 的区别
+## `agg`与`apply`
 
 agg是将指定的向量聚合为标量,比如求向量的平均数，比如将向量元素用字符串拼接为一个字符串,agg传入的就是单独分割开的列。
 apply不仅可以将向量聚合为标量，也可以是返回整个dataframe,也可以是返回指定的向量，根据需求来，apply传入的一般是dataframe或者series。
@@ -297,6 +297,6 @@ df.at[index,columns] = a
 df_score["陈列平均分"]=np.where(df_score.门店类型=="无促",df_score.陈列基础*0.4, df_score.陈列基础)
 ```
 
-* `read_excel` 与 `read_csv`
+* `read_excel`与`read_csv`
 
 理论上这2个读取表格的方法,通过设置参数可以读取单表中任何指定区域的数据,还可以设置哪些字符被识别为NA,表头和索引的位置.
