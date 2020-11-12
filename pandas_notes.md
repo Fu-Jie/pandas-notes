@@ -5,36 +5,35 @@
    2. [`at` 与 `loc` 的区别](#at-与-loc-的区别)
    3. [`align`](#align)
    4. [`at` 与 `iat`，`loc` 与 `iloc` 的区别](#at-与-iatloc-与-iloc-的区别)
-   5. [从 `csv` 文件读取的默认空值与 `excel` 读取的默认空值不一样](#从-csv-文件读取的默认空值与-excel-读取的默认空值不一样)
-   6. [`read_excel` 与 `read_csv`](#read_excel-与-read_csv)
-   7. [`category` 数据类型存在的意义](#category-数据类型存在的意义)
-   8. [`coalesce`](#coalesce)
-   9. [`CategoricalDtype`](#categoricaldtype)
-   10. [`to_frame(name=name)`](#to_framenamename)
-   11. [`as_type`](#as_type)
-   12. [`rename`](#rename)
-   13. [`reindx`](#reindx)
-   14. [`drop`](#drop)
-   15. [`merge`](#merge)
-   16. [`join`](#join)
-   17. [`concat`](#concat)
-   18. [`any`](#any)
-   19. [`all`](#all)
-   20. [`transform`](#transform)
-   21. [`applymap`](#applymap)
-   22. [`agg`](#agg)
-   23. [`apply`](#apply)
-   24. [`pipe`](#pipe)
-   25. [`applymap` 与 `apply`](#applymap-与-apply)
-   26. [`agg` 与 `apply` 的区别](#agg-与-apply-的区别)
-   27. [`apply`,`applymap`,`agg`,`transform`,`pipe`](#applyapplymapaggtransformpipe)
-   28. [`query`](#query)
-   29. [`assign`](#assign)
-   30. [`eval`](#eval)
-   31. [`explode`](#explode)
-   32. [多级索引的显示方法](#多级索引的显示方法)
-   33. [Pandas 1.1.4对于astype的修复](#pandas-114对于astype的修复)
-   34. [Pandas_FAQ](#pandas_faq)
+   5. [`pd.isna()`](#pdisna)
+   6. [`category` 数据类型存在的意义](#category-数据类型存在的意义)
+   7. [`coalesce`](#coalesce)
+   8. [`CategoricalDtype`](#categoricaldtype)
+   9. [`to_frame(name=name)`](#to_framenamename)
+   10. [`as_type`](#as_type)
+   11. [`rename`](#rename)
+   12. [`reindx`](#reindx)
+   13. [`drop`](#drop)
+   14. [`merge`](#merge)
+   15. [`join`](#join)
+   16. [`concat`](#concat)
+   17. [`any`](#any)
+   18. [`all`](#all)
+   19. [`transform`](#transform)
+   20. [`applymap`](#applymap)
+   21. [`agg`](#agg)
+   22. [`apply`](#apply)
+   23. [`pipe`](#pipe)
+   24. [`applymap` 与 `apply`](#applymap-与-apply)
+   25. [`agg` 与 `apply` 的区别](#agg-与-apply-的区别)
+   26. [`apply`,`applymap`,`agg`,`transform`,`pipe`](#applyapplymapaggtransformpipe)
+   27. [`query`](#query)
+   28. [`assign`](#assign)
+   29. [`eval`](#eval)
+   30. [`explode`](#explode)
+   31. [多级索引的显示方法](#多级索引的显示方法)
+   32. [Pandas 1.1.4对于astype的修复](#pandas-114对于astype的修复)
+   33. [Pandas_FAQ](#pandas_faq)
 
 ## 使用 `for` 循环遍历所有元素
 
@@ -55,13 +54,9 @@ at只能作用于一个值的修改，loc可以修改多值。如果只要访问
 
 已i开头使用整数索引，第一行，第一列就是[0,0]。不以i开头的通过索引值和列标签来获取值。
 
-## 从 `csv` 文件读取的默认空值与 `excel` 读取的默认空值不一样
+## `pd.isna()`
 
-可以使用`pd.isna()`或者 `pd.isnull()` 来判断空值，它可以检测所有空值。
-
-## `read_excel` 与 `read_csv`
-
-理论上这2个读取表格的方法,通过设置参数可以读取单表中任何指定区域的数据,还可以设置哪些字符被识别为NA,表头和索引的位置.
+用于检测空值最佳的选择，它会根据输入返回bool值来确定是否为空。
 
 ## `category` 数据类型存在的意义
 
@@ -301,3 +296,7 @@ df.at[index,columns] = a
 ```Python
 df_score["陈列平均分"]=np.where(df_score.门店类型=="无促",df_score.陈列基础*0.4, df_score.陈列基础)
 ```
+
+* `read_excel` 与 `read_csv`
+
+理论上这2个读取表格的方法,通过设置参数可以读取单表中任何指定区域的数据,还可以设置哪些字符被识别为NA,表头和索引的位置.
