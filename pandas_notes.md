@@ -14,26 +14,27 @@
    11. [`rename`](#rename)
    12. [`reindx`](#reindx)
    13. [`drop`](#drop)
-   14. [`merge`](#merge)
-   15. [`join`](#join)
-   16. [`concat`](#concat)
-   17. [`any`](#any)
-   18. [`all`](#all)
-   19. [`transform`](#transform)
-   20. [`applymap`](#applymap)
-   21. [`agg`](#agg)
-   22. [`apply`](#apply)
-   23. [`pipe`](#pipe)
-   24. [`applymap`与`apply`](#applymap与apply)
-   25. [`agg`与`apply`](#agg与apply)
-   26. [`apply`,`applymap`,`agg`,`transform`,`pipe`](#applyapplymapaggtransformpipe)
-   27. [`query`](#query)
-   28. [`assign`](#assign)
-   29. [`eval`](#eval)
-   30. [`explode`](#explode)
-   31. [多级索引的显示方法](#多级索引的显示方法)
-   32. [Pandas 1.1.4对于astype的修复](#pandas-114对于astype的修复)
-   33. [Pandas_FAQ](#pandas_faq)
+   14. [`drop_duplicates`](#drop_duplicates)
+   15. [`merge`](#merge)
+   16. [`join`](#join)
+   17. [`concat`](#concat)
+   18. [`any`](#any)
+   19. [`all`](#all)
+   20. [`transform`](#transform)
+   21. [`applymap`](#applymap)
+   22. [`agg`](#agg)
+   23. [`apply`](#apply)
+   24. [`pipe`](#pipe)
+   25. [`applymap`与`apply`](#applymap与apply)
+   26. [`agg`与`apply`](#agg与apply)
+   27. [`apply`,`applymap`,`agg`,`transform`,`pipe`](#applyapplymapaggtransformpipe)
+   28. [`query`](#query)
+   29. [`assign`](#assign)
+   30. [`eval`](#eval)
+   31. [`explode`](#explode)
+   32. [多级索引的显示方法](#多级索引的显示方法)
+   33. [Pandas 1.1.4对于astype的修复](#pandas-114对于astype的修复)
+   34. [Pandas_FAQ](#pandas_faq)
 
 ## 使用`for`循环遍历所有元素
 
@@ -112,6 +113,21 @@ df=df.reindex(index = cols)
 
 ```Python
 df.drop(columns/index=)
+```
+
+## `drop_duplicates`
+
+根据特定列删除重复值，默认是根据所有列删除重复值。
+
+```Python
+# 基于所有列删除重复行
+df.drop_duplicates()
+# 基于指定列删除重复行
+df.drop_duplicates(subset=["column_name_1","column_name_2"])
+# 设置具体保留重复的是首次重复还是最后重复
+df.drop_duplicates(keep="first|last")
+# 不保留重复值
+df.drop_duplicates(keep=False)
 ```
 
 ## `merge`
