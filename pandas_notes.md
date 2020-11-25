@@ -13,28 +13,29 @@
    10. [`as_type`](#as_type)
    11. [`rename`](#rename)
    12. [`reindx`](#reindx)
-   13. [`drop`](#drop)
-   14. [`drop_duplicates`](#drop_duplicates)
-   15. [`merge`](#merge)
-   16. [`join`](#join)
-   17. [`concat`](#concat)
-   18. [`any`](#any)
-   19. [`all`](#all)
-   20. [`transform`](#transform)
-   21. [`applymap`](#applymap)
-   22. [`agg`](#agg)
-   23. [`apply`](#apply)
-   24. [`pipe`](#pipe)
-   25. [`applymap`与`apply`](#applymap与apply)
-   26. [`agg`与`apply`](#agg与apply)
-   27. [`apply`,`applymap`,`agg`,`transform`,`pipe`](#applyapplymapaggtransformpipe)
-   28. [`query`](#query)
-   29. [`assign`](#assign)
-   30. [`eval`](#eval)
-   31. [`explode`](#explode)
-   32. [多级索引的显示方法](#多级索引的显示方法)
-   33. [Pandas 1.1.4对于astype的修复](#pandas-114对于astype的修复)
-   34. [Pandas_FAQ](#pandas_faq)
+   13. [`reindex_like`](#reindex_like)
+   14. [`drop`](#drop)
+   15. [`drop_duplicates`](#drop_duplicates)
+   16. [`merge`](#merge)
+   17. [`join`](#join)
+   18. [`concat`](#concat)
+   19. [`any`](#any)
+   20. [`all`](#all)
+   21. [`transform`](#transform)
+   22. [`applymap`](#applymap)
+   23. [`agg`](#agg)
+   24. [`apply`](#apply)
+   25. [`pipe`](#pipe)
+   26. [`applymap`与`apply`](#applymap与apply)
+   27. [`agg`与`apply`](#agg与apply)
+   28. [`apply`,`applymap`,`agg`,`transform`,`pipe`](#applyapplymapaggtransformpipe)
+   29. [`query`](#query)
+   30. [`assign`](#assign)
+   31. [`eval`](#eval)
+   32. [`explode`](#explode)
+   33. [多级索引的显示方法](#多级索引的显示方法)
+   34. [Pandas 1.1.4对于astype的修复](#pandas-114对于astype的修复)
+   35. [Pandas_FAQ](#pandas_faq)
 
 ## 使用`for`循环遍历所有元素
 
@@ -105,6 +106,15 @@ df = df.reindex(columns=cols)
 
 # 让df的index设置为cols的顺序
 df=df.reindex(index = cols)
+```
+
+## `reindex_like`
+
+从指定的dataframe的索引结构重建索引
+
+```Python
+# 生成一个只有空值的df,它的索引结构与df1的索引结构一致
+df = pd.Dataframe().reindex_like(df1)
 ```
 
 ## `drop`
