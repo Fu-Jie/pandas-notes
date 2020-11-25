@@ -231,6 +231,18 @@ df.assign(is_target_sku = df.sku.str.contains(pattern).transform(lambda x: 1 if 
 
 创建列的一种高级便捷优雅的方式。
 
+```Python
+# 创建A列等于B列+C列的值
+df.eval("A=B+C")
+# 通过存在的列进行计算,增加不败率和场均失球列
+df.eval(
+        '''
+        不败率=(胜+平)/场次
+        场均失球=失球/场次
+        '''
+        )
+```
+
 ## `explode`
 
 将特定列的类似列表的每个元素展开为一行,同时复制其他列的值,保留原始索引。
